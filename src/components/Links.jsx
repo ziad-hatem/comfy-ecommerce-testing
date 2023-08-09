@@ -16,7 +16,7 @@ const Links = ({ showMenu, setShowMenu }) => {
     >
         <Link className='link' to='/'>Home</Link>
         <Link className='link' to='/about'>About</Link>
-          <Link className='link'>Products</Link>
+          <Link className='link' to='/products'>Products</Link>
           {myUser && <Link className='link' to='/checkout'>Checkout</Link>}
         </ul>
   </div>

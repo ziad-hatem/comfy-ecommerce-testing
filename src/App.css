@@ -47,7 +47,6 @@
 .mainSidebar {
   position: relative;
   transition: 0.8s ease;
-  
   left: -100vh !important;
   z-index: -999;
   opacity: 0;
@@ -113,4 +112,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.image:hover .searchOverlay{
+  opacity: 1;
+}
+
+.image:hover .overlay{
+  opacity: 1;
 }

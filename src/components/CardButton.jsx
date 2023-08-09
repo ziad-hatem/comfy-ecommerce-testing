@@ -6,7 +6,7 @@ const CardButton = () => {
   const {loginWithRedirect, isAuthenticated, logout} = useUserContext()
   return (
     <div className="CardButton" onClick={() => {
-      isAuthenticated ? logout({returnTo:window.location.origin}) : loginWithRedirect()
+      isAuthenticated ? logout({ returnTo: window.location.origin }) : loginWithRedirect()
     }}>
     <h3 style={{color: '#102a42'}} className='flex items-center text-2xl gap-1 cursor-pointer'>
         {

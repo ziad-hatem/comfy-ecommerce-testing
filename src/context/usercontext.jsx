@@ -8,7 +8,7 @@ export const UserProvider = ({ children }) => {
         logout,
         user,
         isLoading,
-        loginWithRedirect
+        loginWithRedirect,
         } = useAuth0()
     
         const [myUser, setMyUser] = useState(null)
