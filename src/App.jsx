@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import About from "./Pages/About";
 import CheckoutPage from "./Pages/CheckoutPage";
 import Products from "./Pages/Products";
+import SingleProductPage from "./Pages/SingleProductPage";
 
 function App() {
   return (
@@ -18,7 +19,10 @@ function App() {
         <Route index path="/" element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="products" element={<Products />} />
-        <Route path="/products/:id" element={<div className="h-[100vh] bg-red-500 text-white"><h1>SingleProduct</h1></div>} />
+        <Route path="/products/:id"
+          element={<SingleProductPage />}
+          errorElement={<div>Sorry We Can't Get This Product</div>}
+        />
         <Route path="checkout" element ={<CheckoutPage />} />
         <Route path="*" element ={<ErrorPage />} />
       </Routes>

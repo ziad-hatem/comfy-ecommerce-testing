@@ -6,8 +6,9 @@ import Links from './Links'
 import Utilits from './Utilits'
 import { FaCartShopping } from 'react-icons/fa6'
 import CardButton from './CardButton'
+import { useUserContext } from '../context/usercontext'
 const SideBar = ({ show, setSide }) => {
-
+  const {myUser} = useUserContext()
     useEffect(() => {
         document.querySelector('.mainSidebar').classList.toggle('showNavbar', show)
     }, [show])
@@ -28,9 +29,10 @@ const SideBar = ({ show, setSide }) => {
           </div>
         <div className="sideBar Links">
             <ul className='relative sidebar flex flex-col'>
-                <Link className='sideLink'>Home</Link>
-                <Link className='sideLink'>About</Link>
-                <Link className='sideLink'>Products</Link>
+                <Link className='sideLink' to='/' onClick={() => setSide(!show)}>Home</Link>
+                <Link className='sideLink' to='about' onClick={() => setSide(!show)}>About</Link>
+                <Link className='sideLink' to='products' onClick={() => setSide(!show)}>Products</Link>
+                {myUser && <Link className='sideLink' to='/checkout' onClick={() => setSide(!show)}>Checkout</Link>}
             </ul>
           </div>
           <div className="utilit">

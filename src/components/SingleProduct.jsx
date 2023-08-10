@@ -19,8 +19,8 @@ export const SingleProduct = ({ image, name, price, id }) => {
             <AiOutlineSearch />
           </Link>
           </div>
-          <div className="info w-[300px] flex justify-between">
-              <h4 className='font-normal first-letter:uppercase'>{ name }</h4>
+          <div className="info w-[300px] flex justify-between mt-3">
+              <h4 className='font-normal first-letter:uppercase text-[#102a42]'>{ name }</h4>
               <h4 className='text-[#ab7a5f] font-normal'>{ formatPrice(price) }</h4>
           </div>
     </div>

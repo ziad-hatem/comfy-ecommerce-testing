@@ -12,7 +12,7 @@ const Navbar = () => {
  const {isLoading} = useUserContext()
   return (
     <div className="nav fixed top-0 w-full z-50 bg-white">
-          <nav className='flex items-center justify-evenly mt-4 relative'>
+          <nav className='flex items-center justify-center gap-28 mt-4 relative'>
       <Logo />
       <Menu sideBar={sideBar} setSideBar={ setSideBar }/>
       <Links />
@@ -21,7 +21,7 @@ const Navbar = () => {
       
       </nav>
       <div className="loader">
-      {isLoading ? <BarLoader width={'100%'} speedMultiplier={0.7} className=' fixed ' color="#36d7b7" /> : ''}
+      {isLoading ? <BarLoader width={'100%'} speedMultiplier={0.8} className=' fixed ' color="#bd7a57" /> : ''}
       </div>
     </div>
   )

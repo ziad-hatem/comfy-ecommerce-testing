@@ -15,12 +15,15 @@ const EmailSection = () => {
                   className='flex items-center justify-center'
                     action="https://formspree.io/f/xjvqykyg"
                     method="POST"
+                    onSubmit={() => {
+                      document.querySelector('.email').innerHTML = ''
+                    }}
               >
                   <input
                       type="email"
                       placeholder='Enter Email'
-                        name='_replyto'
-                      className='max-w-96 sm:w-96 lg:w-96 pl-3 h-[42px] border-2 border-solid border-black outline-none'
+                      name='_replyto'
+                      className='email max-w-96 sm:w-96 lg:w-96 pl-3 h-[42px] border-2 border-solid border-black outline-none'
                   />
                   <button className=' p-2 border border-solid border-black bg-[#ab7a5f]  text-[#222] outline-none'>
                       Subscribe
