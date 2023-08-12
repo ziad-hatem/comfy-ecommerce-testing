@@ -11,7 +11,6 @@ import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
     <Auth0Provider
         domain="dev-nloa7qv3cz04rnpf.uk.auth0.com"
       clientId="YxxeNDXMIs0i9jlqXNDUWqQO6TCmD0kZ"
@@ -25,11 +24,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <QueryClientProvider client={queryClient}>
         <ProductsProvider>
       <CartProvider>
-        <App />
+              <App />
+              
     </CartProvider>
       </ProductsProvider>
         </QueryClientProvider>
       </UserProvider>
     </Auth0Provider>
-  </React.StrictMode>,
 )

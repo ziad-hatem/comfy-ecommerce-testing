@@ -14,8 +14,9 @@ const products_Reducer = (state, action) => {
     switch (action.type) {
         case GET_PRODUCTS_BEGIN:
             return {
+                ...state,
                 product_Loading: true,
-                error: false
+                productsError: false
             }
             break;
         case GET_PRODUCTS_SUCCESS:
@@ -27,30 +28,35 @@ const products_Reducer = (state, action) => {
                 product_Loading: false,
                 products: action.payload,
                 featured_products: featuredProducts,
+                productsError: false
             }
             break;
         case GET_PRODUCTS_ERROR:
             return {
+                ...state,
                 product_Loading: false,
-                error: true
+                productsError: true
             }
             break;
         case GET_SINGLE_PRODUCT_BEGIN:
             return {
+                ...state,
                 product_Loading: true,
-                error: false
+                singleProductError: false
             }
             break;
         case GET_SINGLE_PRODUCT_ERROR:
             return {
+                ...state,
                 product_Loading: false,
-                error: true
+                singleProductError: true,
+                singleProductErrorMsg: action.payload
             }
         case GET_SINGLE_PRODUCT_SUCCESS:
             return {
                 ...state,
                 product_Loading: false,
-                error: true,
+                singleProductError: false,
                 single_Product: action.payload
             }
             break;

@@ -10,7 +10,6 @@ const Featured_Products = () => {
         error,
         featured_products: products
     } = UseProductsProvider()
-    console.log(products)
 
     return (
         <div className="featuredProducts mt-20 p-5 flex flex-col justify-center w-full gap-4">

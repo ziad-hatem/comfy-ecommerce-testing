@@ -19,9 +19,12 @@ import {
 const INITIAL_STATE = {
     product_Loading: false,
     products: [],
-    error: false,
+    productsError: false,
     featured_products: [],
-    single_Product: []
+    single_Product: [],
+    productsErrorMsg: '',
+    singleProductError: false,
+    singleProductErrorMsg: ''
 }
 
 export const ProductsProvider = ({children}) => {
@@ -45,7 +48,7 @@ export const ProductsProvider = ({children}) => {
             const response = await request.data;
             dispatch({type: GET_SINGLE_PRODUCT_SUCCESS, payload: response})
         } catch (error) {
-            dispatch({type: GET_SINGLE_PRODUCT_ERROR})
+            dispatch({type: GET_SINGLE_PRODUCT_ERROR, payload: error})
         }
     }
 
