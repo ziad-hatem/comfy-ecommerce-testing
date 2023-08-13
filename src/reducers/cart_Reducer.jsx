@@ -1,5 +1,5 @@
 import React from 'react'
-import { ADD_TO_CART } from './actions'
+import { ADD_TO_CART, CLEAR_CART, REMOVE_FROM_CART, TOGGLE_AMOUNT, COUNT_CART_TOTALS } from './actions'
 
 const cartReducer = (state, action) => {
 
@@ -33,7 +33,58 @@ const cartReducer = (state, action) => {
             return { ...state, cart: [...state.cart, newItem] }
         }
     }
-    
+
+    if (action.type === REMOVE_FROM_CART) {
+        const tempCart = state.cart.filter((item) => item.id !== action.payload)
+        return {...state, cart: tempCart}
+    }
+
+    if (action.type === CLEAR_CART) {
+        return { ...state, cart: []}
+    }
+
+    if (action.type === TOGGLE_AMOUNT) {
+        const {id, value} = action.payload
+        const tempCart = state.cart.map(item => {
+            if (item.id === id) {
+                if (value === 'inc') {
+                    let newAmount = item.amount + 1
+                    if (newAmount > item.max) {
+                        newAmount = item.max
+                    }
+                    return {...item, amount: newAmount}
+                }
+                if (value === 'dec') {
+                    let newAmount = item.amount - 1
+                    if (newAmount < 1) {
+                        newAmount = 1
+                    }
+                    return {...item, amount: newAmount}
+                }
+
+            } else {
+                return item
+            }
+        })
+        return {...state, cart: tempCart}
+    }
+
+    if (action.type == COUNT_CART_TOTALS) {
+        console.log(state.cart);
+        const {
+            total_items,
+            total_amount
+        } = state.cart.reduce((total, cartItem) => {
+            const { amount, price } = cartItem
+            console.log(total ,cartItem);
+            total.total_items += amount
+            total.total_amount += price * amount
+            return total
+        }, {
+            total_items:0,total_amount:0
+            })
+        return {...state, total_items, total_amount}
+    }
 }
 
 export default cartReducer

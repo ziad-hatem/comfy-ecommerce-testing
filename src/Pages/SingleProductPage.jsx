@@ -10,6 +10,7 @@ import SinglePageError from './SinglePageError'
 import Images from '../components/Images'
 import Stars from '../components/Stars'
 import { formatPrice } from '../reducers/helpers'
+import { Skeleton } from '@mui/material'
 
 import AddToCard from '../components/AddToCard'
 
@@ -43,11 +44,11 @@ const SingleProductPage = () => {
         fetchSingleProduct(`${single_Product_Url}${id}`)
     }, [id])
 
-    if (loading) {
-        return <section>
-            <PageLoader />
-        </section>
-    }
+    // if (!loading) {
+    //     return <section className='h-[100vh] w-screen'>
+    //         <Skeleton variant='rectangular' width={400} height={400}/>
+    //     </section>
+    // }
     if (singleProductError) {
         return <SinglePageError
             errorCode={singleProductErrorMsg?.response?.status}
@@ -71,37 +72,43 @@ const SingleProductPage = () => {
                 style={{ backgroundColor: '#ab7a5f' }}>
                 Back To Products
             </Link>
-            <div className="singleProductContainer m-h-[100vh] mt-[110px] w-[100%] flex flex-col md:flex-row justify-center gap-2">
-                <div className="imagesComponent h-[100%] my-10 md:w-[60%] flex justify-center">
-                    <Images images={images} />
+            <div className="singleProductContainer m-h-[100vh] mt-[110px] w-[100%] flex flex-col md:flex-row justify-center gap-4">
+                <div className="imagesComponent h-[100%] my-10 md:w-[60%] flex justify-center md:mr-[-150px] gap-7">
+                    {!loading ? <Images images={images} /> : <Skeleton variant='rectangular' animation='wave' width={700} height={600} />}
                 </div>
-                <div className="info w-fit mt-12 md:w-[50%] ml-6">
+                <div className="info w-fit mt-12 md:w-[40%] ml-6">
                     <div
                         className="name text-5xl min-w-[150px] font-semibold mb-4 text-[#102a42] first-letter:uppercase"
-                    >{name}</div>
+                    >{!loading ? name : <Skeleton variant='text' animation='wave' width={300} />}</div>
                     <div className="stars flex gap-3 items-center">
-                        <Stars stars={stars} />
-                        <span>({reviews} customer reviews)</span>
+                        {
+                            !loading ? 
+                            <div className="div flex gap-3 items-center">
+                            <Stars stars={stars} />
+                            <span>({reviews} customer reviews)</span>
+                                </div> :
+                                <Skeleton variant='text' animation='wave' width={200} />
+                        }
                     </div>
-                    <div className="price text-[#ab7a5f] text-2xl my-2">{formatPrice(price)}</div>
-                    <p className='max-w-[450px]'>{description}</p>
+                    <div className="price text-[#ab7a5f] text-2xl my-2">{!loading ? formatPrice(price) : <Skeleton variant='text' animation='wave' width={130} />}</div>
+                    <p className='max-w-[450px] h-[200px] flex items-center'>{!loading ? description : <Skeleton variant='text' animation='wave' height={300} width={400} />}</p>
                     <div className="moreInfo my-4 flex gap-4">
                         <span className='text-[#324d67] font-bold'>Available : </span>
-                        {stock > 0 ? 'In Stock' : 'Out Of Stock'}
+                        {loading ? <Skeleton variant='text' animation='wave' width={100}/> : stock > 0 ? 'In Stock' : 'Out Of Stock'}
                     </div>
                     <div className="moreInfo my-4 flex gap-4">
                     <span className='text-[#324d67] font-bold'>SKU : </span>
-                        {sku}
+                        {!loading ? sku : <Skeleton variant='text' animation='wave' width={150}/>}
                     </div>
                     <div className="moreInfo my-4 flex gap-4">
                     <span className='text-[#324d67] font-bold'>Brand : </span>
-                        {company}
+                        {!loading ? company : <Skeleton variant='text' animation='wave' width={50}/>}
                     </div>
 
                     <hr style={{ backgroundColor: '#bcccdc', width: '100%', height: '2px' }} />
                 
                     
-                    {stock > 0 && <AddToCard  {...product} product={product} />}
+                    {loading ? '' : stock > 0 && <AddToCard  {...product} product={product} />}
                     
                 </div>
             </div>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useForm, ValidationError } from '@formspree/react';
+import { CircularProgress } from '@mui/material';
 const EmailSection = () => {
   const [state, handleSubmit] = useForm("xjvqykyg");
   if (state.succeeded) {
@@ -32,13 +33,13 @@ const EmailSection = () => {
                       name='_replyto'
                       className='email max-w-96 sm:w-96 lg:w-96 pl-3 h-[42px] border-2 border-solid border-black outline-none'
                     />
-                            <ValidationError 
+                    <ValidationError 
                     prefix="Email" 
                     field="email"
                     errors={state.errors}
                   />
-                  <button disabled={state.submitting} className='p-2 border border-solid border-black bg-[#ab7a5f]  text-[#222] outline-none'>
-                      {state.submitting ? 'Subscribing...' : 'Subscribe'}
+                  <button disabled={state.submitting} className='p-2 h-[42px] w-[90px] border border-solid border-black bg-[#ab7a5f]  text-[#222] outline-none'>
+                      {state.submitting ? <CircularProgress size={'20px'} /> : 'Subscribe'}
                   </button>
               </form>
 

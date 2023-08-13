@@ -1,7 +1,7 @@
 import React from 'react'
 import PageHero from '../components/PageHero'
 import { UseProductsProvider } from '../context/products_context'
-import Skeleton from 'react-loading-skeleton'
+import { Skeleton } from '@mui/material'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { SingleProduct } from '../components/SingleProduct'
 const Products = () => {
@@ -9,6 +9,18 @@ const Products = () => {
     product_Loading: loading,
     products: products
   } = UseProductsProvider()
+
+  const skeletonLoading = Array.from({ length: 20 }, (_, index) => {
+    return (
+      <div className="div">
+        <Skeleton key={index} animation='wave' variant='rectangular' width={300} height={200} />
+        <div className="infoLoad mt-2 flex justify-between">
+        <Skeleton key={index} animation='wave' variant='text' width={100} />
+        <Skeleton key={index} animation='wave' variant='text' width={70} />
+        </div>
+      </div>
+    )
+  })
   
   return (
       <section>
@@ -22,16 +34,10 @@ const Products = () => {
                 return <SingleProduct key={product.id} {...product} />
             }
             )
-            : <div className='flex'>
-            <Skeleton
-            className='flex flex-col gap-4'
-            count={15}
-            baseColor="#4d4c4c"
-            highlightColor="#444"
-            width={'300px'}
-            height={'200px'}
-            containerClassName='flex w-[99vw] my-5 justify-center gap-4 lg:gap-8 flex-wrap'
-            />
+            : <div className='flex gap-4 flex-wrap'>
+              {
+                skeletonLoading
+              }
             </div>
         }
         </div>    

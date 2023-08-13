@@ -4,21 +4,21 @@ import CardButton from './CardButton'
 import { UseCartContext } from '../context/cart_context'
 import { Link } from 'react-router-dom'
 const Utilits = ({ style }) => {
-  const {total_items} = UseCartContext()
+  const {total_items, cart} = UseCartContext()
   return (
     <div className="utilits hidden md:flex w-full justify-center md:w-72" style={{display: style}}>
         <div className="card flex gap-4 justify-center">
-          <h3 style={{color: '#102a42'}} className='flex relative items-center text-2xl gap-1 cursor-pointer'>
+          <Link  to='/cart' style={{color: '#102a42'}} className='flex relative items-center text-2xl gap-1 cursor-pointer'>
             Cart
-          <Link to='/cart' className='cart'>
+          <div  className='cart'>
             <div
               className=
               'absolute text-[16px] top-[-12px] right-[-14px] flex justify-center items-center rounded-full h-[25px] w-[25px] bg-[#ab7a5f] text-white'>
               {total_items}
             </div>
               <FaCartShopping />
-            </Link>
-          </h3>
+            </div>
+          </Link>
             <CardButton />
         </div>
       </div>

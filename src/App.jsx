@@ -14,6 +14,7 @@ import PageLoader from "./components/PageLoader";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CartPage from "./Pages/CartPage";
+import  ProtectedRoute  from "./Pages/PrivateRoute";
 function App() {
   return (
     <BrowserRouter>
@@ -42,7 +43,7 @@ function App() {
           loader={<PageLoader />}
         />
         <Route
-          path="checkout"
+          path="/checkout"
           element={<CheckoutPage />}
           loader={<PageLoader />}
         />
