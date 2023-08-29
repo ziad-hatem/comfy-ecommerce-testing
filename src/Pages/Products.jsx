@@ -1,4 +1,5 @@
 import PageHero from '../components/PageHero'
+import React from 'react'
 import Filters from '../components/Filters'
 import Sorting from '../components/Sorting'
 import DisplayData from '../components/DisplayData'

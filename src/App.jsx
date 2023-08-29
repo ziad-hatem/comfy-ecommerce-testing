@@ -1,4 +1,5 @@
 import "./App.css";
+import React from 'react'
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Home from "./Pages/Home";
 import Navbar from "./Pages/Navbar";
@@ -9,8 +10,6 @@ import CheckoutPage from "./Pages/CheckoutPage";
 import Products from "./Pages/Products";
 import SingleProductPage from "./Pages/SingleProductPage";
 import PageLoader from "./components/PageLoader";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import CartPage from "./Pages/CartPage";
 import ReqireAuth from "./components/ReqireAuth";
 function App() {
@@ -57,8 +56,6 @@ function App() {
           element={<ErrorPage />}
         />
       </Routes>
-      {/* <ToastContainer position='top top' draggable /> */}
-
       <Footer />
     </BrowserRouter>
   );

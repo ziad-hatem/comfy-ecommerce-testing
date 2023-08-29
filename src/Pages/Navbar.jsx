@@ -2,7 +2,6 @@ import React from 'react'
 import Logo from '../components/Logo'
 import Links from '../components/Links'
 import Utilits from '../components/Utilits'
-import  { UseGlobalContext } from '../components/UseGlobalContext';
 import Menu from '../components/Menu';
 import SideBar from '../components/SideBar';
 import { useUserContext } from '../context/usercontext';
