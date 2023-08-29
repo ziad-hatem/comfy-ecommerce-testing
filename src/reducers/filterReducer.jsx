@@ -66,9 +66,9 @@ const filterReducer = (state, action) => {
         return {...state, filters: {...state.filters, [name]: value}}
     } 
     if (action.type === FILTER_PRODUCTS) {
-        const { filtered_Products } = state
-        const {text, category, company, color, price, shipping} = state.filters
-        let tempProducts = [...filtered_Products]
+        const { all_Products } = state;
+        const { text, category, company, color, price, shipping } = state.filters;
+        let tempProducts = [...all_Products]
         // filters
         if (text) {
             tempProducts = tempProducts.filter(product => {
@@ -100,7 +100,7 @@ const filterReducer = (state, action) => {
         tempProducts = tempProducts.filter(product => {
             return product.price <= price
         })
-        return {...state, filtered_Products: tempProducts}
+        return {...state, filtered_Products: [...tempProducts]}
     }
     if (action.type === LOAD_PRICE) {
         let maxPrice = action.payload.map(p => p.price)

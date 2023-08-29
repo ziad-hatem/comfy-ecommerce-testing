@@ -52,13 +52,13 @@ export const FilterProvider = ({ children }) => {
   }, [products])
 
   useEffect(() => {
-    dispatch({ type: SORT_PRODUCTS })
     dispatch({ type: FILTER_PRODUCTS })
+    dispatch({ type: SORT_PRODUCTS })
   }, [products, state.sort, state.filters])
 
   const updateFilter = (e) => {
-    let name = e.target.name
-    let value = e.target.value
+    let name = e.target.name;
+    let value = e.target.value;
     if (name === 'category') {
       value = e.target.textContent
     }

@@ -17,10 +17,9 @@ const Data = ({productData}) => {
   { productData.map(
     (product) => {
       if(!grid_View) {
-        return <SingleProductList key={product.id} {...product} />
+        return <SingleProductList {...product} />
       }
-         return <SingleProductView key={product.id} {...product} />
-
+         return <SingleProductView {...product} />
       }
       )
     } 

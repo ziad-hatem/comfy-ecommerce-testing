@@ -30,8 +30,8 @@ const Filters = () => {
             name='text'
            placeholder='Search'
            className='outline-none pl-2'
+           onChange={updateFilter}
             value={text}
-            onChange={updateFilter}
           />
         </div>
         {/* Category */}
