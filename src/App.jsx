@@ -1,5 +1,3 @@
-import React from "react";
-import { styled } from "styled-components";
 import "./App.css";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Home from "./Pages/Home";
@@ -11,10 +9,10 @@ import CheckoutPage from "./Pages/CheckoutPage";
 import Products from "./Pages/Products";
 import SingleProductPage from "./Pages/SingleProductPage";
 import PageLoader from "./components/PageLoader";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CartPage from "./Pages/CartPage";
-import  ProtectedRoute  from "./Pages/PrivateRoute";
+import ReqireAuth from "./components/ReqireAuth";
 function App() {
   return (
     <BrowserRouter>
@@ -39,14 +37,16 @@ function App() {
         <Route 
         path="/products/:id"
           element={<SingleProductPage />}
-          errorElement={<div>Sorry We Can't Get This Product</div>}
           loader={<PageLoader />}
         />
+        
+        <Route element={<ReqireAuth />}>
         <Route
           path="/checkout"
           element={<CheckoutPage />}
           loader={<PageLoader />}
-        />
+          />
+          </Route>
         <Route
           path="cart"
           element={<CartPage />}
@@ -57,7 +57,8 @@ function App() {
           element={<ErrorPage />}
         />
       </Routes>
-      <ToastContainer position='bottom-right' draggable />
+      {/* <ToastContainer position='top top' draggable /> */}
+
       <Footer />
     </BrowserRouter>
   );

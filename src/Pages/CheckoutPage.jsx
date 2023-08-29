@@ -1,12 +1,14 @@
 import React from 'react'
 import PageHero from '../components/PageHero'
-import StripeCheckout from '../components/StripeCheckout'
+import StripeCheckout from '../components/StripeCheckOut'
+
+
 
 const CheckoutPage = () => {
   return (
       <section>
           <PageHero title={'Checkout'} />
-      <div className="page h-screen mt-[100px]">
+      <div className="page h-screen flex items-center justify-center">
         <StripeCheckout />
         </div>
     </section>

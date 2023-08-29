@@ -7,8 +7,10 @@ import Utilits from './Utilits'
 import { FaCartShopping } from 'react-icons/fa6'
 import CardButton from './CardButton'
 import { useUserContext } from '../context/usercontext'
+import { UseCartContext } from '../context/cart_context'
 const SideBar = ({ show, setSide }) => {
-  const {myUser} = useUserContext()
+  const { myUser } = useUserContext()
+  const {total_items} = UseCartContext()
     useEffect(() => {
         document.querySelector('.mainSidebar').classList.toggle('showNavbar', show)
     }, [show])
@@ -35,14 +37,15 @@ const SideBar = ({ show, setSide }) => {
                 {myUser && <Link className='sideLink' to='/checkout' onClick={() => setSide(!show)}>Checkout</Link>}
             </ul>
           </div>
-          <div className="utilit">
+          <div className="utilites">
           <div className="card flex gap-4 justify-center">
           <h3 style={{color: '#102a42'}} className='flex relative items-center text-2xl gap-1 cursor-pointer'>
             Cart
-          <span className='cart-num' onClick={
-            (e) => console.log(e.target)
-            }>
-              <FaCartShopping />
+          <span className='cart-num'>
+              <Link to='/cart' onClick={() => setSide(!show)} className="div relative flex">
+                <FaCartShopping />
+                <span className='absolute text-[14px] top-[-15px] right-[-10px] flex justify-center items-center h-[24px] w-[24px] bg-[#ab7a5f] p-1 rounded-full'>{total_items}</span>
+              </Link>
             </span>
           </h3>
             <CardButton />

@@ -7,14 +7,14 @@ import { ProductsProvider } from './context/products_context.jsx'
 import { Auth0Provider } from '@auth0/auth0-react';
 import { UserProvider } from './context/usercontext.jsx'
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
+import { FilterProvider } from './context/filter_Context.jsx'
+
 const queryClient = new QueryClient()
-
-
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <Auth0Provider
-        domain="dev-nloa7qv3cz04rnpf.uk.auth0.com"
-      clientId="YxxeNDXMIs0i9jlqXNDUWqQO6TCmD0kZ"
+        domain={process.env.REACT_APP_AUTH_DOMAIN}
+      clientId={process.env.REACT_APP_CLIENT_ID}
       redirect_uri={window.location.origin}
         authorizationParams={{
           redirect_uri: window.location.origin
@@ -22,11 +22,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       cacheLocation='localstorage'
     >
       <UserProvider>
-        <QueryClientProvider client={queryClient}>
+      <QueryClientProvider client={queryClient}>
         <ProductsProvider>
       <CartProvider>
+        <FilterProvider>
               <App />
-              
+        </FilterProvider>
     </CartProvider>
       </ProductsProvider>
         </QueryClientProvider>

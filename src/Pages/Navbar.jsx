@@ -11,7 +11,7 @@ const Navbar = () => {
  const [sideBar, setSideBar] = React.useState(false)
  const {isLoading} = useUserContext()
   return (
-    <div className="nav fixed top-0 w-full z-50 bg-white">
+    <div className="nav h-14 w-full z-50 bg-white">
           <nav className='flex items-center justify-center gap-28 mt-4 relative'>
       <Logo />
       <Menu sideBar={sideBar} setSideBar={ setSideBar }/>

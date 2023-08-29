@@ -1,5 +1,3 @@
-import { useAuth0 } from '@auth0/auth0-react'
-import React from 'react'
 import {AiOutlineUserAdd, AiOutlineUserDelete} from 'react-icons/ai'
 import { useUserContext } from '../context/usercontext'
 const CardButton = () => {

@@ -1,9 +1,8 @@
-import React from 'react'
 import { UseProductsProvider } from '../context/products_context'
 // import Skeleton from 'react-loading-skeleton'
 import { Skeleton } from '@mui/material'
 import 'react-loading-skeleton/dist/skeleton.css'
-import { SingleProduct } from './SingleProduct'
+import { SingleProductView } from './SingleProductView'
 import { Link } from 'react-router-dom'
 const Featured_Products = () => {
     const {
@@ -15,10 +14,10 @@ const Featured_Products = () => {
     const skeletonLoading = Array.from({ length: 3 }, (_, index) => {
         return (
           <div className="div">
-            <Skeleton key={index} animation='wave' variant='rectangular' width={300} height={200} />
+            <Skeleton key={0} animation='wave' variant='rectangular' width={300} height={200} />
             <div className="infoLoad mt-2 flex justify-between">
-            <Skeleton key={index} animation='wave' variant='text' width={100} />
-            <Skeleton key={index} animation='wave' variant='text' width={70} />
+            <Skeleton key={1} animation='wave' variant='text' width={100} />
+            <Skeleton key={2} animation='wave' variant='text' width={70} />
             </div>
           </div>
         )
@@ -34,7 +33,7 @@ const Featured_Products = () => {
                  
                        
             {
-            !loading ? products.slice(0, 3).map((product) => { return <SingleProduct key={product.id} {...product} /> }) 
+            !loading ? products.slice(0, 3).map((product) => { return <SingleProductView key={product.id} {...product} /> }) 
             :
             skeletonLoading
             }

@@ -1,6 +1,4 @@
-import React from 'react'
 import { AiOutlineMenu } from 'react-icons/ai';
-import {UseGlobalContext} from '../components/UseGlobalContext';
 
 const Menu = ({sideBar, setSideBar}) => {
   return (

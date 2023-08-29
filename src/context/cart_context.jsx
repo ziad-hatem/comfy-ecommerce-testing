@@ -2,6 +2,9 @@ import React, { useEffect, useReducer } from 'react'
 import cartReducer from '../reducers/cart_Reducer'
 import { ADD_TO_CART, CLEAR_CART, REMOVE_FROM_CART, TOGGLE_AMOUNT, COUNT_CART_TOTALS } from '../reducers/actions'
 import { redirect } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import { useState } from 'react'
 const CartContext = React.createContext()
 
 
@@ -26,9 +29,13 @@ const initialState = {
 
 export const CartProvider = ({ children }) => {
     const [state, dispatch] = useReducer(cartReducer, initialState)
+    const [notify, setNotify] = useState(false)
     const addToCart = (id, color, amount, product) => {
         dispatch({ type: ADD_TO_CART, payload: { id, color, amount, product } })
-        return redirect('/cart')
+        setNotify(true)
+        setTimeout(() => {
+            setNotify(false)
+        }, 3000)
     }
 
     // remove item
@@ -53,7 +60,7 @@ export const CartProvider = ({ children }) => {
     
 
   return (
-      <CartContext.Provider value={{...state, addToCart, removeItem, toggleAmount, clearCart}}>
+      <CartContext.Provider value={{...state, addToCart, removeItem, toggleAmount, clearCart, setNotify,notify}}>
           {children}
       </CartContext.Provider>
   )

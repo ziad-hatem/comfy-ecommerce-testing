@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai'
 import {MdOutlineDone} from 'react-icons/md'
 import { UseCartContext } from '../context/cart_context'
@@ -6,7 +6,6 @@ const AddToCard = ({ colors, stock, id, product }) => {
   const {addToCart} = UseCartContext()
   const [nowColor, setColor] = useState(colors[0])
   var [count, setCount] = useState(1)
-  // console.log(id, nowColor, count, product)
   return (
     <>
       

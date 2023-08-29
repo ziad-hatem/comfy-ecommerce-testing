@@ -3,9 +3,12 @@ import { UseCartContext } from '../context/cart_context'
 import { Link } from 'react-router-dom'
 import CartContent from '../components/CartContent'
 import PageHero from '../components/PageHero'
+import { useUserContext } from '../context/usercontext'
 
 const CartPage = () => {
-    const { cart } = UseCartContext()
+  const { cart } = UseCartContext()
+  const { isAuthenticated } = useUserContext()
+  console.log(isAuthenticated);
     if (cart.length < 1) {
         return <section className='h-[96vh] flex flex-col items-center justify-center gap-8 text-center w-full'>
           <h4 className='text-3xl font-bold'>Your Cart is empty</h4>

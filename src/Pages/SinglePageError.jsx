@@ -1,7 +1,9 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-const SinglePageError = ({errorCode, errorMsg}) => {
+const SinglePageError = ({ errorCode, errorMsg }) => {
+
   return (
       <section className='w-[98vw] h-[94vh] flex justify-center items-center flex-col gap-3'>
           <h1 className='text-8xl'>{ errorCode }</h1>

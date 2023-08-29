@@ -1,4 +1,3 @@
-import React from 'react'
 import CartColunms from './CartColunms'
 import { Link } from 'react-router-dom'
 import {formatPrice} from '../reducers/helpers'
@@ -8,7 +7,7 @@ import SingleItemCart from './SingleItemCart'
 
 const CartContent = () => {
     const { total_amount, shipping_fee, cart, clearCart } = UseCartContext()
-    const {isAuthenticated, loginWithRedirect} = useUserContext()
+    const { isAuthenticated, loginWithRedirect } = useUserContext()
   return (
       <section className='flex flex-col min-h-[100vh] w-full md:w-[98vw] mt-[100px] md:mt-0 items-center'>
           <CartColunms />
@@ -32,11 +31,11 @@ const CartContent = () => {
               <Link className='bg-[#222] text-white w-[160px] text-center p-1 rounded-md' onClick={() => clearCart()}>Clear Shopping Cart</Link>
           </div>
           
-          <div className="total w-full flex flex-col items-end">
+          <div className="total w-full flex items-center flex-col">
                   <div style={{
                       border: '1px solid #bcccdc'
                   }}
-                      className="totalContainer min-w-[370px] gap-4 h-[200px] p-16 flex flex-col items-center justify-center">
+                      className="totalContainer min-w-[340px] gap-4 h-[200px] p-10 flex flex-col items-center justify-center">
                   <div className="subtotal flex gap-5">
                   <h3 className='text-[#102a42]'>Subtotal:</h3>
                 <span>{ formatPrice(total_amount) }</span>
@@ -54,10 +53,10 @@ const CartContent = () => {
                   
                   
               </div>
-                  <div className="div flex justify-end w-full text-white">
+                  <div className="div flex justify-center w-full text-white">
                   {isAuthenticated ?
-                      <Link to='/checkout' className='w-[370px] text-xl flex items-center justify-center tracking-[2px] h-[40px] bg-[#ab7a5f]'>Proceed to checkout</Link> :
-                      <button className='w-[370px] h-[40px] tracking-[2px] bg-[#ab7a5f]'
+                      <Link to='/checkout' className='w-[350px] text-xl flex items-center justify-center tracking-[2px] h-[40px] bg-[#ab7a5f]'>Proceed to checkout</Link> :
+                      <button className='w-[350px] h-[40px] tracking-[2px] bg-[#ab7a5f]'
                          onClick={() => loginWithRedirect()}>LOGIN</button>
                     }
                   </div>
