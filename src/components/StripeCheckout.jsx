@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Link, useNavigate } from 'react-router-dom'
-
 import "../payment.css";
 import {
   CardElement,
@@ -15,9 +14,7 @@ import { useUserContext } from "../context/usercontext";
 import { formatPrice } from "../reducers/helpers";
 import { Alert, Snackbar } from "@mui/material";
 
-const promise = loadStripe(
-  "pk_test_51NeSe4IvXLHLMOWMtA3vBg7rbYZCTbhoPncoIOE9S4WgMfgIfEN3nOJ0PTaTN3XQuGbdxLhwf7W4ojgRGsQkXnPp00LgCogGP5"
-);
+const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISH_KEY);
 
 const CheckoutForm = () => {
   const [succeeded, setSucceeded] = useState(false);
@@ -29,7 +26,7 @@ const CheckoutForm = () => {
   const elements = useElements();
   const { myUser } = useUserContext();
   const navigation = useNavigate()
-  const { cart, shipping_fee, total_amount, clearCart, notify, setNotify } = UseCartContext();
+  const { cart, shipping_fee, total_amount, clearCart } = UseCartContext();
   const createPaymentIntent = async () => {
     try {
       const data = await axios.post(
@@ -81,7 +78,6 @@ const CheckoutForm = () => {
       setError(null);
       setProcessing(false);
       setSucceeded(true);
-      setNotify(true)
       setTimeout(() => {
         clearCart();
         navigation('/')
